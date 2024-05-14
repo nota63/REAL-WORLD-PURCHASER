@@ -1,0 +1,278 @@
+# project - electronic accessories purchaser
+
+# lets import necessary modules
+
+import pandas as vd
+import random
+import string
+import time
+import os
+
+
+# CREATING A FUNCTION TO CONTACT US
+def contact_us():
+    print(f"Email: vishaldudhabarve105@gmail.com\n Contact: +919022216598")
+
+
+class Purchase:
+    def __init__(self):
+        self.accessories = []
+        self.balance = 70000
+        self.passwords = []
+
+    #     create functions to display our data to users
+    # CREATING FUNCTION TO PURCHASE A LAPTOP
+    def laptop(self):
+        try:
+            data = {'Laptops': ['Lenovo Idea pad 56', 'Acer 89', 'Infix slim', 'Dell-Latitude 340'],
+                    'Price': [20000, 50000, 23000, 67000]}
+
+            ui = vd.DataFrame(data)
+            print(ui)
+            user = int(input('Enter Budget From Menu To Purchase:'))
+            if self.balance >= user:
+                self.balance -= user
+                self.accessories.append(user)
+                print(f' Laptop:  Of Rupees: "{user}" Purchased Success! ')
+                print(
+                    f" Rupees: '{user}' Has Been Deducted from your account\n and your current account balance is {self.balance}")
+            else:
+                print('Insufficient Funds!')
+
+        except ValueError:
+            print('ValueError!')
+        finally:
+            print('THANKS FOR PURCHASING LAPTOP FROM US.')
+
+    # CREATING FUNCTION TO PURCHASE A PHONE
+    def phones(self):
+        try:
+            phones = {'Phones': ['Redmi 12 5G', 'Redmi 12 4G', 'Realm Narrow 20', 'Infix Hot 10', 'Infix Note 30'],
+                      'Price': [15000, 10000, 10000, 12000, 25000]}
+            ux = vd.DataFrame(phones)
+            print(ux)
+
+            user1 = int(input('Enter an amount from the menu\n to purchase he phone:'))
+
+            if self.balance >= user1:
+                self.balance -= user1
+                self.accessories.append(user1)
+                print(f" Phone : Of worth rupees '{user1}' Purchased Success!")
+                print(f" Rupees: '{user1}' Deducted From Your Account\n And Your Current Balance is : {self.balance}")
+            else:
+                print('INSUFFICIENT FUNDS!!!')
+
+        except ValueError:
+            print('VALUE ERROR!!!!')
+
+        finally:
+            print('THANKS FOR PURCHASING PHONE FROM US.')
+
+    #     CREATING FUNCTION TO PURCHASE A KEYBOARD AND MOUSE
+
+    def key_mouse(self):
+        try:
+            keyboards = {'Keyboards': ['NormalKeyboards', 'GamingKeyboards', 'HyperKeyboards'],
+                         'Price': [200, 700, 3500]}
+            ux = vd.DataFrame(keyboards)
+            print(ux)
+
+            mouse = {'Mouse': ['Wired_Mouse', 'Wireless_Mouse'],
+                     'Price': [340, 588]}
+            um = vd.DataFrame(mouse)
+            print(um)
+            user3 = int(input('Enter Item Price To Purchase:'))
+            if self.balance > user3:
+                self.balance -= user3
+                self.accessories.append(user3)
+                print(f'Successfully Purchased Accessories of worth Rupees: "{user3}"')
+                print(f" Rupees: '{user3}'  Deducted From Your Account!\n You Can View Your Balance From Menu!")
+        except ValueError:
+            print('VALUE ERROR!!!')
+        except IndexError:
+            print('INDEX ERROR!!!')
+        finally:
+            print('THANKS FOR SHOPPING FROM US. \n HAVE A GOOD DAY DEAR!!!')
+
+    #         CREATING A FUNCTION TO GENERATE PASSWORD
+    def generate_password(self, length=8):
+        character = string.ascii_letters + string.digits + string.punctuation
+        password = ''.join(random.choice(character) for _ in range(length))
+        self.passwords.append(password)
+
+        for password3 in password:
+            print(password3)
+
+    # CREATING A FUNCTION TO VIEW ACCESSORIES
+
+    def view_cart(self):
+        if self.accessories:
+            for objects in self.accessories:
+                print('Your Cart..')
+                print(f"  Accessories: {objects}")
+        else:
+            print('YOU DONT HAVE PURCHASED ANY ACCESSORIES YET!!')
+            # CREATING A FUNCTION TO VIEW_BALANCE
+
+    def view_wallet(self):
+        print("Bank Balance_Fetched_Successfully!")
+        print(f'Digital_Account 9087- "{self.balance}"')
+
+    # CREATING A FUNCTION TO VIEW GENERATED PASSWORDS
+
+    def view_passwords(self):
+        if self.passwords:
+            for password5 in self.passwords:
+                print("YOUR_PASSWORDS_DATABASE..")
+                print(f"Password: '{password5}'")
+
+    # CREATING A FUNCTION TO VIEW TIME
+    def time_t(self):
+        t = time.localtime(time.time())
+        localtime = time.asctime(t)
+        data7 = 'CurrentTime:' + time.asctime(t)
+        print(data7)
+
+    # CREATING A FUNCTION TO VIEW_DIRECTORY
+    def path(self):
+        current_directory = os.getcwd()
+        print('Current_Directory:', current_directory)
+
+    # CREATING A FUNCTION TO DRAW TURTLE GRAPHICS
+    def draw_turtle(self):
+        try:
+            user6 = input('yes for draw, else no :')
+            if 'yes' in user6:
+                import turtle
+
+                def draw_attractive_design4():
+                    colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+                    pen = turtle.Turtle()
+                    pen.speed(10)
+                    turtle.bgcolor("black")
+                    pen.pensize(2)
+
+                    size = 20
+
+                    for i in range(300):
+                        pen.color(colors[i % 6])
+                        pen.forward(size)
+                        pen.left(59)
+                        pen.forward(size)
+                        pen.left(59)
+                        pen.forward(size)
+                        pen.left(59)
+                        pen.forward(size)
+                        pen.left(121)
+                        size += 2
+
+                    pen.hideturtle()
+
+                draw_attractive_design4()
+
+                turtle.done()
+            else:
+                print('Ok_No_Problem')
+        except ValueError:
+            print(
+                'Error ValueError! value should be have an string only\n integers are not accepted as other functions')
+        finally:
+            print('THANKS TO REACH THIS FUNCTION')
+
+    # CREATING A FUNCTION TO ADD FUNDS TO ACCOUNT
+    def add_funds(self):
+        try:
+            funds = int(input('How Much To Add:'))
+            self.balance += funds
+            print(f" Rupees: '{funds}' Deposited Successfully To your Account ")
+            print(f" And Your Current_Balance Is: INR '{self.balance}'")
+        except ValueError:
+            print('ValueError! Funds should be have an integer only!')
+
+    # CREATING A FUNCTION TO WITHDRAW FUNDS FROM ACCOUNT
+    def withdraw(self):
+        try:
+            funds1 = int(input('Enter An Amount To Withdraw:'))
+            if self.balance >= funds1:
+                self.balance -= funds1
+                print(f" Rupees : '{funds1}' Withdrawn Success!")
+                print(f" And Your Current Balance IS: INR '{self.balance}'")
+            else:
+                print('CAN NOT WITHDRAW! YOUR ACCOUNT BALANCE DOES NOT MEET TO YOUR WITHDRAW AMOUNT!')
+        except ValueError:
+            print('Withdraw amount should be have in integer form!\n strings are not accepted')
+
+    # CREATING MAIN FUNCTION....
+
+
+def main():
+    ticket = Purchase()
+
+    while True:
+        try:
+            welcome_massage='WELCOME TO OUR VIRTUAL SHOP'
+            print(welcome_massage.center(50,","))
+
+            menu = ('.....MENU....\n1. purchase laptop\n 2.purchase phone\n 3.purchase keyboard and mouse\n '
+                    '4.generate_password\n'
+                    '5.contact us\n 6.VIEW_BANK_BALANCE\n 7.view_your_cart\n 8.quite\n '
+                    '9.view_your_generated_passwords\n 10.view_current_time\n 11.view_current_path\n '
+                    '12.Draw_turtle_graphics\n 13.add_funds_to_account\n 14.withdraw_amount')
+            print(menu.upper())
+
+            user7 = int(input('Put an index to start shopping:'))
+
+            if user7 == 1:
+                ticket.laptop()
+
+            elif user7 == 2:
+                ticket.phones()
+
+            elif user7 == 3:
+                ticket.key_mouse()
+
+            elif user7 == 4:
+                ticket.generate_password()
+
+            elif user7 == 5:
+                contact_us()
+
+            elif user7 == 6:
+                ticket.view_wallet()
+
+            elif user7 == 7:
+                ticket.view_cart()
+
+            elif user7 == 8:
+                print('Exiting\nSuccess\n GoodBye!')
+                break
+            elif user7 == 9:
+                ticket.view_passwords()
+
+            elif user7 == 10:
+                ticket.time_t()
+
+            elif user7 == 11:
+                ticket.path()
+
+            elif user7 == 12:
+                ticket.draw_turtle()
+
+            elif user7 == 13:
+                ticket.add_funds()
+
+            elif user7 == 14:
+                ticket.withdraw()
+
+        except ValueError:
+            print('VALUE ERROR!!!')
+
+        except IndexError:
+            print('INDEX ERROR!!!')
+
+        finally:
+            print('THANKS FOR SHOPPING FROM US...\n HAVE A GOOD DAY DEAR')
+
+
+if __name__ == "__main__":
+    main()
